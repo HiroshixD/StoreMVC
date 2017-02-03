@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="200" />
+          <Property Name="ClientLastName" Type="varchar" MaxLength="200" />
+          <Property Name="ClientBirthDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Invoice_Detail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailId" />
+          </Key>
+          <Property Name="InvoiceDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductQty" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="InvoiceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Invoice_Header">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="Purchase_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="200" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Invoice_D__Invoi__1B0907CE">
+          <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="0..1" />
+          <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Header">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Invoice_Detail">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_D__Produ__1A14E395">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Invoice_Detail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_H__Clien__173876EA">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Invoice_Header">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Categor__1273C1CD">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StoreModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Detail" EntityType="Self.Invoice_Detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice_Header" EntityType="Self.Invoice_Header" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Invoice_D__Invoi__1B0907CE" Association="Self.FK__Invoice_D__Invoi__1B0907CE">
+            <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+            <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_D__Produ__1A14E395" Association="Self.FK__Invoice_D__Produ__1A14E395">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_H__Clien__173876EA" Association="Self.FK__Invoice_H__Clien__173876EA">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Categor__1273C1CD" Association="Self.FK__Product__Categor__1273C1CD">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__1273C1CD" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClientLastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ClientBirthDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Invoice_Header" Relationship="Self.FK__Invoice_H__Clien__173876EA" FromRole="Client" ToRole="Invoice_Header" />
+        </EntityType>
+        <EntityType Name="Invoice_Detail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailId" />
+          </Key>
+          <Property Name="InvoiceDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductQty" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <NavigationProperty Name="Invoice_Header" Relationship="Self.FK__Invoice_D__Invoi__1B0907CE" FromRole="Invoice_Detail" ToRole="Invoice_Header" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Invoice_D__Produ__1A14E395" FromRole="Invoice_Detail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Invoice_Header">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="Purchase_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Invoice_H__Clien__173876EA" FromRole="Invoice_Header" ToRole="Client" />
+          <NavigationProperty Name="Invoice_Detail" Relationship="Self.FK__Invoice_D__Invoi__1B0907CE" FromRole="Invoice_Header" ToRole="Invoice_Detail" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__1273C1CD" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Invoice_Detail" Relationship="Self.FK__Invoice_D__Produ__1A14E395" FromRole="Product" ToRole="Invoice_Detail" />
+        </EntityType>
+        <Association Name="FK__Product__Categor__1273C1CD">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_H__Clien__173876EA">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Invoice_Header">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_D__Invoi__1B0907CE">
+          <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="0..1" />
+          <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice_Header">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="Invoice_Detail">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Invoice_D__Produ__1A14E395">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Invoice_Detail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StoreContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Invoice_Detail" EntityType="Self.Invoice_Detail" />
+          <EntitySet Name="Invoice_Header" EntityType="Self.Invoice_Header" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <AssociationSet Name="FK__Product__Categor__1273C1CD" Association="Self.FK__Product__Categor__1273C1CD">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_H__Clien__173876EA" Association="Self.FK__Invoice_H__Clien__173876EA">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_D__Invoi__1B0907CE" Association="Self.FK__Invoice_D__Invoi__1B0907CE">
+            <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+            <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Invoice_D__Produ__1A14E395" Association="Self.FK__Invoice_D__Produ__1A14E395">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoreModelStoreContainer" CdmEntityContainer="StoreContext">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="StoreModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="StoreModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+                <ScalarProperty Name="ClientBirthDate" ColumnName="ClientBirthDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Detail">
+            <EntityTypeMapping TypeName="StoreModel.Invoice_Detail">
+              <MappingFragment StoreEntitySet="Invoice_Detail">
+                <ScalarProperty Name="InvoiceDetailId" ColumnName="InvoiceDetailId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductQty" ColumnName="ProductQty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoice_Header">
+            <EntityTypeMapping TypeName="StoreModel.Invoice_Header">
+              <MappingFragment StoreEntitySet="Invoice_Header">
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Purchase_Date" ColumnName="Purchase_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="StoreModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

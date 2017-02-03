@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__1273C1CD" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClientLastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClientBirthDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Invoice_Header" Relationship="Self.FK__Invoice_H__Clien__173876EA" FromRole="Client" ToRole="Invoice_Header" />
+  </EntityType>
+  <EntityType Name="Invoice_Detail">
+    <Key>
+      <PropertyRef Name="InvoiceDetailId" />
+    </Key>
+    <Property Name="InvoiceDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="ProductQty" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="InvoiceId" Type="Int32" />
+    <NavigationProperty Name="Invoice_Header" Relationship="Self.FK__Invoice_D__Invoi__1B0907CE" FromRole="Invoice_Detail" ToRole="Invoice_Header" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Invoice_D__Produ__1A14E395" FromRole="Invoice_Detail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Invoice_Header">
+    <Key>
+      <PropertyRef Name="InvoiceId" />
+    </Key>
+    <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientId" Type="Int32" />
+    <Property Name="Purchase_Date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Invoice_H__Clien__173876EA" FromRole="Invoice_Header" ToRole="Client" />
+    <NavigationProperty Name="Invoice_Detail" Relationship="Self.FK__Invoice_D__Invoi__1B0907CE" FromRole="Invoice_Header" ToRole="Invoice_Detail" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__1273C1CD" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Invoice_Detail" Relationship="Self.FK__Invoice_D__Produ__1A14E395" FromRole="Product" ToRole="Invoice_Detail" />
+  </EntityType>
+  <Association Name="FK__Product__Categor__1273C1CD">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice_H__Clien__173876EA">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Invoice_Header">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice_D__Invoi__1B0907CE">
+    <End Role="Invoice_Header" Type="Self.Invoice_Header" Multiplicity="0..1" />
+    <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice_Header">
+        <PropertyRef Name="InvoiceId" />
+      </Principal>
+      <Dependent Role="Invoice_Detail">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice_D__Produ__1A14E395">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Invoice_Detail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Invoice_Detail" EntityType="Self.Invoice_Detail" />
+    <EntitySet Name="Invoice_Header" EntityType="Self.Invoice_Header" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <AssociationSet Name="FK__Product__Categor__1273C1CD" Association="Self.FK__Product__Categor__1273C1CD">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice_H__Clien__173876EA" Association="Self.FK__Invoice_H__Clien__173876EA">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice_D__Invoi__1B0907CE" Association="Self.FK__Invoice_D__Invoi__1B0907CE">
+      <End Role="Invoice_Header" EntitySet="Invoice_Header" />
+      <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice_D__Produ__1A14E395" Association="Self.FK__Invoice_D__Produ__1A14E395">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Invoice_Detail" EntitySet="Invoice_Detail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

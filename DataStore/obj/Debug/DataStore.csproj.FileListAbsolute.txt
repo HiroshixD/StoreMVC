@@ -1,0 +1,14 @@
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\obj\Debug\DataStore.csprojResolveAssemblyReference.cache
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\DataStore.dll.config
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\DataStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\DataStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\EntityFramework.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\ETStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\SVCStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\ETStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\SVCStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\EntityFramework.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\obj\Debug\DataStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\DataStore\obj\Debug\DataStore.pdb

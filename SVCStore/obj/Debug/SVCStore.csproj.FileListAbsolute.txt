@@ -1,0 +1,10 @@
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\obj\Debug\SVCStore.csprojResolveAssemblyReference.cache
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\SVCStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\SVCStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\ETStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\EntityFramework.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\ETStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\EntityFramework.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\obj\Debug\SVCStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\obj\Debug\SVCStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\SVCStore\bin\Debug\es\EntityFramework.resources.dll

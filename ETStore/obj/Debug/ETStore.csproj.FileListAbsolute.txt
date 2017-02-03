@@ -1,0 +1,11 @@
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\ETStore.dll.config
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\ETStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\ETStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\EntityFramework.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\EntityFramework.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\obj\Debug\ETStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\obj\Debug\ETStore.pdb
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\ETStore\bin\Debug\es\EntityFramework.SqlServer.resources.dll
