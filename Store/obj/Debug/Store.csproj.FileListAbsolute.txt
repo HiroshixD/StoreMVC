@@ -75,10 +75,8 @@ C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\obj\Debug\Store.
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\DataStore.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\ETStore.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.ServiceLocation.dll
-C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.Configuration.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.Mvc.dll
-C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\SVCStore.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\WebActivatorEx.dll
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\DataStore.pdb
@@ -87,6 +85,6 @@ C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\SVCStore.pdb
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.xml
-C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.Mvc.xml
-C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\BLStore.dll
+C:\Users\Root\Documents\Visual Studio 2013\Projects\Store\Store\bin\BLStore.pdb

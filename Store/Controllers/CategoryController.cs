@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SVCStore.Interfaces;
 using ETStore.Models;
+using BLStore;
 
 namespace Store.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly IRepository<Category> category;
-        public CategoryController(IRepository<Category> category)
+        private readonly BLCategory category;
+        public CategoryController(BLCategory category)
         {
             this.category = category;
         }
-
+        //
         // GET: /Category/
         public ActionResult Index()
         {
-            var items = category.GetAll();
+            var items = category.GetAllCategories();
             return View(items);
         }
 
@@ -27,7 +27,7 @@ namespace Store.Controllers
         // GET: /Category/Details/5
         public ActionResult Details(int id)
         {
-            var item = category.GetItemById(id);
+            var item = category.GetCategoryById(id);
             return View(item);
         }
 
@@ -47,7 +47,7 @@ namespace Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    category.Add(model);
+                    category.AddCategory(model);
                     category.Save();
                 }
 
@@ -63,7 +63,7 @@ namespace Store.Controllers
         // GET: /Category/Edit/5
         public ActionResult Edit(int id)
         {
-            var item = category.GetItemById(id);
+            var item = category.GetCategoryById(id);
             return View(item);
         }
 
@@ -74,16 +74,17 @@ namespace Store.Controllers
         {
             try
             {
-                if (ModelState.IsValid) {
-                    category.Edit(model);
+                if (ModelState.IsValid)
+                {
+                    category.UpdateCategory(model);
                     category.Save();
                 }
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch
             {
-                ViewBag.Error = ex;
-                return View();
+                var item = category.GetCategoryById(id);
+                return View(item);
             }
         }
 
@@ -91,7 +92,7 @@ namespace Store.Controllers
         // GET: /Category/Delete/5
         public ActionResult Delete(int id)
         {
-            var item = category.GetItemById(id);
+            var item = category.GetCategoryById(id);
             return View(item);
         }
 
@@ -104,14 +105,15 @@ namespace Store.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    category.Delete(model);
+                    category.DeleteCategory(model);
                     category.Save();
                 }
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                var item = category.GetItemById(id);
+                var item = category.GetCategoryById(id);
                 return View(item);
             }
         }
